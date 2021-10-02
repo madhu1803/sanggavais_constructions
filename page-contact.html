@@ -43,6 +43,30 @@
       <script src="javascript/html5shiv.js"></script>
       <script src="javascript/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- Email JS Scirpts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('user_Z8yVsLBKcIuFWskSzcJtY');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contactform').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('service_8i931wp', 'template_3uqcg3e', this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
+    <!-- Email JS Script end -->
   </head>
 
   <body
